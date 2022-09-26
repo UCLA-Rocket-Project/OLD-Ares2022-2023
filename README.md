@@ -6,10 +6,10 @@ This is a central repository for Ares software. This repository contains all fil
 
 ```
 AresSoftware
-│   README.md
 └───Arduino
 └───Raspberry Pi
 └───Scripts
+│   README.md
 ```
 
 ### Arduino
