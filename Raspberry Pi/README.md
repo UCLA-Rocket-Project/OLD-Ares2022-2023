@@ -1,5 +1,5 @@
 # Raspberry Pi
-This folder includes all files related to the operation of Raspberry Pi in the ground electronics system.
+This folder includes all files related to the operation of Raspberry Pi in the ground electronics system. The Raspberry Pi needs to be running the [latest 64 bit Raspbian](https://www.raspberrypi.com/software/).
 
 
 ## Directory Structure
