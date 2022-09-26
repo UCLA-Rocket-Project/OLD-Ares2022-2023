@@ -26,7 +26,7 @@ This folder includes the ino file for the bodytube shock system in-flight.
 
 
 ## Architecture
-
+WIP
 
 ## Implementation Details
 ### Teensy Boards
