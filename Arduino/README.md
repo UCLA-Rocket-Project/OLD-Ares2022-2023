@@ -8,7 +8,6 @@ This folder includes all code/files related to the operation of Arduino boards w
 Arduino
 └───Avionics
 └───Ground Systems
-│   README.md
 │   libraries.zip
 ```
 

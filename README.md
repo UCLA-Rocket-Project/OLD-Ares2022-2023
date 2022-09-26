@@ -9,7 +9,6 @@ AresSoftware
 └───Arduino
 └───Raspberry Pi
 └───Scripts
-│   README.md
 ```
 
 ### Arduino
