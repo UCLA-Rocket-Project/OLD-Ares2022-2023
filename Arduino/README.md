@@ -1,1 +1,22 @@
+# Arduino
+This folder includes all code/files related to the operation of Arduino boards within the system.
 
+
+## Directory Structure
+
+```
+Arduino
+└───Avionics
+└───Ground Systems
+│   README.md
+│   libraries.zip
+```
+
+### Avionics
+This folder includes all ino files related to the operation of in-flight Arduino boards.
+
+### Ground Systems
+This folder includes all ino files related to the operation of ground system Arduino boards.
+
+### libraries.zip
+This zip file includes all libraries needed for compiling the ino files within the sub-directories of this directory.
