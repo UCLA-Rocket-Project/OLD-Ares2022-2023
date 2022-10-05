@@ -44,7 +44,7 @@ void loop()
       {
         for (int j = 1; j < i - 1; j++)
         {
-          int pin = pins[j - 1];
+          // int pin = pins[j - 1];
           if (command[j] == '1')
           {
             io.digitalWrite(i, LOW);
