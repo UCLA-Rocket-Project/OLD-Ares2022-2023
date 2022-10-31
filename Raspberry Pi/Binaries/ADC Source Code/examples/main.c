@@ -27,7 +27,7 @@
 #define NS_TO_MS(ns)    ((ns)/1000000)
 /// Convert nanoseconds to microseconds
 #define NS_TO_US(ns)    ((ns)/1000)
-#define REF			5.10		//Modify according to actual voltage
+#define REF			4.97		//Modify according to actual voltage
 								//external AVDD and AVSS(Default), or internal 2.5V
 
 #define PORT     2000
@@ -51,10 +51,10 @@ void  Handler(int signo)
 
 int main(void)
 {
-	char labels_raw[10][100] = {"high_press_raw", "low_press_raw", "lox_raw", "fuel_raw", "lox_fill_raw", "pneumatics_raw", "u", "i", "o", "p"};
-	char labels[10][100] = {"high_press", "low_press", "lox", "fuel", "lox_fill", "pneumatics", "a", "b", "c", "d"};
-	double a[10] = {2479.88234, 251.14054, 250.66866, 250.91580, 250.90833, 1.0, 1.0, 1.0, 1.0, 1.0};
-	double b[10] = {-1396.01010, -272.60412, -280.04629, -278.51658, -277.05566, 0.0, 0.0, 0.0, 0.0, 0.0};
+	char labels_raw[10][100] = {"IN0_raw", "IN1_raw", "IN2_raw", "IN3_raw", "IN4_raw", "IN5_raw", "IN6_raw", "IN7_raw", "IN8_raw", "IN9_raw"};
+	char labels[10][100] = {"IN0", "IN1", "IN2", "IN3", "IN4", "IN5", "IN6", "IN7", "IN8", "IN9"};
+	double a[10] = {243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 55.24861878, 243.902439, 1250, 1.0};
+	double b[10] = {-276.0243902, -273.9756098, -284.2926829, -257.5121951, -260.4390244, -269.6341463, -66.02762431, -259.6829268, -1171.25, 0.0};
 	double c[10] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     UDOUBLE ADC[10];
 	double adc_data[10];
