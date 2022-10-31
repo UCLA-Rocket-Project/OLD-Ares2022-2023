@@ -40,6 +40,7 @@ void loop()
 
       if (i == NVALVES + 2 && command[0] == 'S' && command[i - 1] == 'E')
       {
+        modify_command(command);
         for (int j = 1; j < i - 1; j++)
         {
           if (command[j] == '1')
@@ -55,4 +56,15 @@ void loop()
       i = 0;
     }
   }
+}
+
+void modify_command(char* a)
+{
+  if (a[0] == '1')
+    a[0] = '0';
+
+  if (a[9] == '1')
+    a[0] = '1';
+  else if (a[9] == '0')
+    a[0] = '0';
 }

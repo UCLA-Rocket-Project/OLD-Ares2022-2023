@@ -29,6 +29,7 @@ def favicon():
 @app.route('/<path:request>')
 def handle_request(request):
     response = make_response('failure', 200)
+    modify_request(request)
     serial_request = 'S' + request + 'E\n'
     for _ in range(5):
         try:
@@ -59,6 +60,26 @@ def handle_request(request):
 
     response.mimetype = 'text/plain'
     return response
+
+def modify_request(request):
+    """
+    Pre-processes request before sending to client (Controls Pad Arduino).
+
+    Current modifications completed:
+    - Disable switch channel 16 (index 0 in request)
+    - Multiplexes single MPV signal to 2 output channels.
+    """
+    # Disable switch channel 16
+    if request[0] == '1':
+        request[0] = '0'
+
+    # Multiplex MPV signal to disabled switch channel
+    if request[9] == '1':
+        request[0] = '1'
+    elif request[9] == '0':
+        request[0] = '0'
+
+    return request
 
 """
 @app.route('/controls/fixed/<path:request>')
