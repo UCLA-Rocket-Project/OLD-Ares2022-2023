@@ -69,7 +69,7 @@ int main(void)
 	log = fopen(log_dir, "a+");
 	int pipe = 0;
 	char data[10000];
-	
+
     // Exception handling:ctrl + c
     signal(SIGINT, Handler);
     DEV_Module_Init();
@@ -83,16 +83,15 @@ int main(void)
 
 	uint64_t prev = millis() * 1000000;
 
-
 	struct sockaddr_in     servaddr;
 	// Creating socket file descriptor
     if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
         perror("socket creation failed");
         exit(EXIT_FAILURE);
     }
-   
+
     memset(&servaddr, 0, sizeof(servaddr));
-       
+
     // Filling server information
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(PORT);
@@ -107,7 +106,7 @@ int main(void)
 	while(1) {
 		uint64_t now = millis();
 
-		for(i = 0; i < 6; i++) 
+		for(i = 0; i < 9; i++)
 		{
 			ADC[i] = ADS1263_GetChannalValue(i);
 		}
@@ -121,7 +120,7 @@ int main(void)
 		fputs(data, log_raw);
 		fputs(data, log);
 
-		for(i=0; i<6; i++) {
+		for(i=0; i<9; i++) {
 			if((ADC[i]>>31) == 1) {
 				adc_data[i] = REF*2 - ADC[i]/2147483648.0 * REF; //7fffffff + 1
 			}
