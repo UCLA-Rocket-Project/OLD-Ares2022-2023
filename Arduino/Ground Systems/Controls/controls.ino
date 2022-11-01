@@ -1,19 +1,21 @@
-#include <MCP23S17.h>
+#include <MCP23S17.h> // MCP23S17 by Rob Tillaart (https://github.com/RobTillaart/MCP23S17)
 
 #define NVALVES 16
 #define BUFFER 1000
 
-MCP23S17 io(&SPI, 10, 0);
+MCP23S17 io(10, 0, &SPI);
 char command[BUFFER];
 int i = 0;
 
 void setup()
 {
   Serial.begin(9600);
+  SPI.begin();
   io.begin();
+  io.pinMode8(0, 0);
+  io.pinMode8(1, 0);
   for (int i = 0; i < NVALVES; i++)
   {
-    io.pinMode(i, OUTPUT);
     io.digitalWrite(i, HIGH);
   }
 }
@@ -44,11 +46,11 @@ void loop()
         {
           if (command[j] == '1')
           {
-            io.digitalWrite(i, LOW);
+            io.digitalWrite(j-1, 0);
           }
           else
           {
-            io.digitalWrite(i, HIGH);
+            io.digitalWrite(j-1, 1);
           }
         }
       }
