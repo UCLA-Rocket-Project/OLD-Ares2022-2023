@@ -52,7 +52,7 @@ void  Handler(int signo)
 int main(void)
 {
 	char labels_raw[10][100] = {"IN0_raw", "IN1_raw", "IN2_raw", "IN3_raw", "IN4_raw", "IN5_raw", "IN6_raw", "IN7_raw", "IN8_raw", "IN9_raw"};
-	char labels[10][100] = {"lox_fill", "fuel_tank", "cc", "low_press", "lox_tank", "IN5", "purge", "IN7", "high_press", "load_cell"};
+	char labels[10][100] = {"lox_fill", "fuel_tank", "cc", "low_press", "lox_tank", "lox_manifold", "pneumatics", "fuel_manifold", "high_press", "load_cell"};
 	double a[10] = {243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 55.24861878, 243.902439, 1250, 1.0};
 	double b[10] = {-276.0243902, -273.9756098, -284.2926829, -257.5121951, -260.4390244, -269.6341463, -66.02762431, -259.6829268, -1171.25, 0.0};
 	double c[10] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
