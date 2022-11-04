@@ -1,7 +1,7 @@
 import serial, time, socket, os
 
 port = '/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0'
-labels = ['lox_fill_tc', '2', '3', '4', '5']
+labels = ['lox_tank_top', 'lox_tank_bot', '3', 'chamber', '5']
 log = open('/home/rocket/logs/thermocouple.csv', 'a')
 
 def millis():
