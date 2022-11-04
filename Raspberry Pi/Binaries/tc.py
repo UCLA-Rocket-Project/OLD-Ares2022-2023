@@ -1,7 +1,7 @@
 import serial, time, socket, os
 
 port = '/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0'
-labels = ['lox_fill_tc', '2', '3', '4', '5']
+labels = ['1', '2', '3', '4', '5']
 log = open('/home/rocket/logs/thermocouple.csv', 'a')
 
 def millis():
@@ -30,9 +30,12 @@ while True:
     if len(data) == len(labels):
         now = millis()
         log.write(str(now) + ',' + line)
-        if now > prev + 500:
+        log.flush()
+        if now > prev + 100:
             for l, d in zip(labels, data):
                 if d != 'null':
                     bytes = (l + ' ' + l + '=' + d + ' ' + str(now * 1000000)).encode()
-                    client.sendto(bytes, addr)
+                else:
+                    bytes = (l + ' ' + l + '=-460.0 ' + str(now * 1000000)).encode()
+                client.sendto(bytes, addr)
             prev = now
