@@ -1,0 +1,2 @@
+# Environments
+This folder includes all environment files for Linux. For now, all files are service files that register the Python or binary files as system service. Running the binaries as system service ensures that they will automatically run on boot-up and that Linux will schedule a restart of the process whenever any one of them crashes. For more information on how to use these files and where to copy them, please refer to [this link](https://medium.com/codex/setup-a-python-script-as-a-service-through-systemctl-systemd-f0cc55a42267).

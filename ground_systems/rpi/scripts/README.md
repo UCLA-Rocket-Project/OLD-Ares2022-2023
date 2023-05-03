@@ -1,0 +1,2 @@
+# PLACEHOLDER
+This represents a placeholder directory. Will hold all RPi-related scripts, such as Ansible deployment scripts/playbooks, service restarting scripts (among other user-operator scripts, i.e. for starting/stopping data recording, tagging of data log files, starting new files for logging), etc.
