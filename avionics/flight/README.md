@@ -1,29 +1,29 @@
-# Avionics
-This folder includes all code/files related to the operation of Arduino boards within the avionics system.
+# avionics/flight
+This folder includes all Flight Software (FSW), specifically the code/files related to the operation of Arduino boards within the Avionics system.
 
 
 ## Directory Structure
 
 ```
-Avionics
-└───Bodytube
-└───Ground
-└───Nosecone
-└───Shock
+avionics/flight
+└───bodytube
+└───ground
+└───nosecone
+└───shock
 └───libraries.zip
 ```
 
-### Bodytube
-This folder includes the ino file for the bodytube system in-flight.
+### bodytube
+This folder includes the ino file for the in-flight Bodytube System.
 
-### Ground
-This folder includes the ino file for the ground radio station.
+### ground
+This folder includes the ino file for the on-ground Ground Station.
 
-### Nosecone
-This folder includes the ino file for the nosecone system in-flight.
+### nosecone
+This folder includes the ino file for the in-flight Nosecone System.
 
-### Shock
-This folder includes the ino file for the bodytube shock system in-flight.
+### shock
+This folder includes the ino file for the in-flight Bodytube Shock System.
 
 ### libraries.zip
 This zip file includes all libraries needed for compiling the ino files within the sub-directories of this directory. Please refer to [this link](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries) on details about the installation of Arduino libraries.
@@ -32,6 +32,7 @@ This zip file includes all libraries needed for compiling the ino files within t
 WIP
 
 ## Implementation Details
+
 ### Teensy Boards
 All files in this directory were created for Teensy 4.1 board. Flashing to a different board may require some basic modification of the code.
 

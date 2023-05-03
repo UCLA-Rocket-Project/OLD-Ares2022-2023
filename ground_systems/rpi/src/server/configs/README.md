@@ -1,11 +1,11 @@
-# Configs
+# server/configs
 This folder includes all config files for prebuilt executables.
 
 
 ## Directory Structure
 
 ```
-Binaries
+server/configs
 |   grafana.ini
 |   telegraf.conf
 ```
