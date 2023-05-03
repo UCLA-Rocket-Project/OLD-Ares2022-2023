@@ -1,0 +1,16 @@
+[Unit]
+Description=Flask redirect
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+Environment="FLASK_APP=redirect"
+ExecStart=flask run --host=0.0.0.0 --port=80
+WorkingDirectory=/home/rocket/binaries
+Restart=always
+RestartSec=1
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n

@@ -1,27 +1,31 @@
 # AresSoftware
-This is a central repository for Ares software. This repository contains all files for Raspberry Pi, Arduino-compatible boards, and post-processing.
+This is a central repository for Ares Software. This repository contains all software for Avionics and Ground Systems, as well as any additional code/scripts used to support the development, deployment, and/or operation of the software. Additionally, select data and documentation is also version-controlled in this repository, enabling a "one-stop-shop" for everything of interest.
 
 
-## Directory Structure
+## Base-Level Directory Structure
 
 ```
 AresSoftware
-└───Arduino
-└───Raspberry Pi
-└───Scripts
+└───avionics
+└───data
+└───ground_system
+└───scripts
 ```
 
-### Arduino
-This folder includes all ino files and Arduino libraries needed for ground and avionics Arduino systems. For simplicity, within this repository, all Arduino-compatible boards may be referred to as Arduino. If a specific board is required for operation, this will be specified within the documentation in the same folder as the ino file.
+### avionics
+Contains all Avionics-related software, including Arduino microcontroller source code and various scripts used for operation.
 
-### Raspberry Pi
-This folder includes all source code and operating system files for ground Raspberry Pi. This includes config files for Grafana, Influx DB, and Telegraf.
+### ground_systems
+Contains all Ground Systems-related software, including all software used to enable our Raspberry Pi server, as well as Arduino microcontroller source code and various scripts used for software deployment and system operation.
 
-### Scripts
-This folder includes files for post-processing the encoded data.
+### data
+Contains all "important" data that we desire to version-control. This could include logged data from tests and/or full operations (e.g. static fires, cold flows, launches, etc.).
+
+### scripts
+Contains overall GENERAL scripts, primarily for supporting nominal software development.
 
 
-## Overall Architecture
+## Overall Relevant Electronics System Architecture
 ![rocket drawio](https://user-images.githubusercontent.com/31735483/192203986-2f849688-51ab-46fd-9736-e6a44f8085f0.png)
 
 The architecture diagram omits individual sensors and specific components and only gives a high-level overview of the system. For a more specific component-level description, please refer to the documentation within individual folders.

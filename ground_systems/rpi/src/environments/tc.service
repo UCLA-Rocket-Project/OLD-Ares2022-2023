@@ -1,0 +1,15 @@
+[Unit]
+Description=Thermocouple
+After=multi-user.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=python3 /home/rocket/binaries/tc.py
+Restart=always
+RestartSec=1
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n

@@ -1,0 +1,15 @@
+[Unit]
+Description=ADC
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/rocket/binaries/adc
+WorkingDirectory=/home/rocket/binaries
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
