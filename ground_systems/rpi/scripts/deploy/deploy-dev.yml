@@ -1,0 +1,66 @@
+# deploy-dev
+# Type: Playbook
+# Purpose:
+# - Performs the collection of helpful state information (user, revision, branch, time, etc.)
+# - Prepares for a DEV deployment (determining deployment directory)
+# - Facilitates tasks for file deployment
+
+- hosts: production_groundsystems
+  gather_facts: True
+  vars:
+    dir: "{{ time }}_{{ git_revision_short }}"
+    base_dir: "%LOCALAPPDATA%\\varda-hitl"
+    deployment_directory: "{{ base_dir }}\\dev\\{{ user }}\\{{ dir }}"
+    config_directory: "{{ deployment_directory }}"
+  pre_tasks:
+    - name: Git revision
+      command: git describe --match="" --always --dirty --abbrev=0
+      args:
+        chdir: "{{ playbook_dir }}/.."
+      register: git_revision
+      delegate_to: localhost
+      run_once: True
+      check_mode: no
+      changed_when: False
+
+    - name: Git branch
+      command: git branch --show-current
+      args:
+        chdir: "{{ playbook_dir }}/.."
+      register: git_branch
+      delegate_to: localhost
+      run_once: True
+      check_mode: no
+      changed_when: False
+
+    # define important values used for deployment
+    - set_fact:
+        user={{ lookup('env', 'USER') or 'unknown' }}
+        git_revision={{ git_revision.stdout }}
+        git_revision_short={{ git_revision.stdout[:8] }}
+        git_branch={{ git_branch.stdout }}
+        time='{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}-{{ ansible_date_time.minute }}-{{ ansible_date_time.second }}'
+        time_human_readable='{{ ansible_date_time.date }} at {{ ansible_date_time.time }}'
+
+    - debug:
+        msg: "Deployment will be deployed to directory: '{{ deployment_directory }}'"
+
+    - name: Create base directory
+      win_file:
+        path: "{{ base_dir }}"
+        state: directory
+
+    - name: Create desktop shortcut to base directory
+      win_shortcut:
+        src: "{{ base_dir }}"
+        dest: '%UserProfile%\Desktop\varda-hitl.lnk'
+    
+  roles:
+    - flight_deployment
+    - ground_deployment
+  
+  post_tasks:
+    - name: Create Desktop shortcut to DEV deployments subdirectory
+      win_shortcut:
+        src: "{{ base_dir }}\\dev"
+        dest: '%UserProfile%\Desktop\dev_deployments.lnk'
