@@ -12,6 +12,10 @@ dashboards = {
 def grafana_home():
     return redirect('http://192.168.0.99:3000/d/XlDHbH-nk/barracuda?orgId=1&from=now-20s&to=now', code=302)
 
+@app.route('/stream')
+def cctv():
+    return redirect('http://192.168.0.99:4567/stream', code=302)
+
 @app.route('/<path:address>')
 def grafana_dashboard(address):
     if address in dashboards:
