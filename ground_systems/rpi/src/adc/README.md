@@ -1,0 +1,2 @@
+# adc
+This folder includes all source code supporting the compilation of the ADC binary (including driver code, Makefiles, main operation code, etc.). Based on the [official public Waveshare High-Precision AD Hat Repo](https://github.com/waveshare/High-Pricision_AD_HAT), with a few small modifications/cleaning/reorganizations.
