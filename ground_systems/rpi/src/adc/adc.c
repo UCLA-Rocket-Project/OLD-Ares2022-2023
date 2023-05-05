@@ -51,7 +51,7 @@ void  Handler(int signo)
 
 int main(void)
 {
-	char labels_raw[10][100] = {"IN0_raw", "IN1_raw", "IN2_raw", "IN3_raw", "IN4_raw", "IN5_raw", "IN6_raw", "IN7_raw", "IN8_raw", "IN9_raw"};
+	//char labels_raw[10][100] = {"IN0_raw", "IN1_raw", "IN2_raw", "IN3_raw", "IN4_raw", "IN5_raw", "IN6_raw", "IN7_raw", "IN8_raw", "IN9_raw"};
 	char labels[10][100] = {"IN0", "IN1", "IN2", "IN3", "IN4", "IN5", "IN6", "IN7", "IN8", "IN9"};
 	double a[10] = {243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 55.24861878, 243.902439, 1250, 1.0};
 	double b[10] = {-276.0243902, -273.9756098, -284.2926829, -257.5121951, -260.4390244, -269.6341463, -66.02762431, -259.6829268, -1171.25, 0.0};
