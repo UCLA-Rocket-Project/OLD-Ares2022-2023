@@ -48,15 +48,15 @@ GROUPS = {
 
 
 def gen_help_msg_services(services):
-    return ', '.join((f"{key} ({val[1]})") for key, val in services.items()) + '.'
+    return '; '.join((f"{key} ({val[1]})") for key, val in services.items()) + '.'
 
 
 def gen_help_msg_groups(groups):
-    return ', '.join((f"{key} ({val[1]} Includes: {', '.join(val[0])})") for key, val in groups.items()) + '.'
+    return '; '.join((f"{key} ({val[1]} Includes: {', '.join(val[0])})") for key, val in groups.items()) + '.'
 
 
 def gen_help_msg_ops(ops):
-    return ', '.join((f"{key} ({val})") for key, val in ops.items()) + '.'
+    return '; '.join((f"{key} ({val})") for key, val in ops.items()) + '.'
 
 
 def Operation(op):
