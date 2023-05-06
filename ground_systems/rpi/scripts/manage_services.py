@@ -137,7 +137,6 @@ def main():
     # Run operations on specified services.
     for service in services:
         subprocess.run(["systemctl", operation, SERVICES[service][0]])
-
         time.sleep(1)
 
 
