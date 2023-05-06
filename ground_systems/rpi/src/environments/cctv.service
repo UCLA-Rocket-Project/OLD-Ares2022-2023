@@ -1,16 +1,15 @@
 [Unit]
-Description=ADC
-After=multi-user.target
+Description=CCTV
 
 [Install]
 WantedBy=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/home/rocket/binaries/adc
-WorkingDirectory=/home/rocket/binaries
+ExecStart=ustreamer --port=4567 --host=0.0.0.0 --device=/dev/video0
+WorkingDirectory=/home/rocket
 Restart=always
-RestartSec=3
+RestartSec=1
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=%n

@@ -25,9 +25,9 @@ client = socket.socket(family = socket.AF_INET, type = socket.SOCK_DGRAM)
 def favicon():
     return ('', 200)
 
-
-@app.route('/<path:request>')
+@app.route('/controls/<request>')
 def handle_request(request):
+    print("GOT: " + request)
     response = make_response('failure', 200)
     serial_request = 'S' + request + 'E\n'
     for _ in range(5):
@@ -39,6 +39,8 @@ def handle_request(request):
             
         try:
             serial_response = serial_response.decode()
+            log.write(serial_response)
+            log.flush()
         except:
             continue
 
@@ -60,57 +62,10 @@ def handle_request(request):
     response.mimetype = 'text/plain'
     return response
 
+if __name__ == '__main__':
+    app.run(debug=True)
+
 """
-@app.route('/controls/fixed/<path:request>')
-def handle_request(request):
-    response = make_response('failure', 200)
-    serial_request = 'S' + request + 'E\n'
-    for _ in range(5):
-        try:
-            serial_port.write(serial_request.encode())
-            serial_response = serial_port.readline()
-        except:
-            serial_port = serial.Serial(port, 9600, timeout=0.1)
-            continue
-            
-        try:
-            serial_response = serial_response.decode()
-        except:
-            continue
-
-        if (serial_response == serial_request):
-            response = make_response('success', 200)
-            break
-
-    response.mimetype = 'text/plain'
-    return response
-
-
-@app.route('/controls/relative/<path:request>')
-def handle_request(request):
-    response = make_response('failure', 200)
-    serial_request = 'S' + request + 'E\n'
-    for _ in range(5):
-        try:
-            serial_port.write(serial_request.encode())
-            serial_response = serial_port.readline()
-        except:
-            serial_port = serial.Serial(port, 9600, timeout=0.1)
-            continue
-            
-        try:
-            serial_response = serial_response.decode()
-        except:
-            continue
-
-        if (serial_response == serial_request):
-            response = make_response('success', 200)
-            break
-
-    response.mimetype = 'text/plain'
-    return response
-
-
 @app.route('/config/download/<path:filename>')
 def download_file(filename):
     file = '/home/ubuntu/logs/' + filename
@@ -122,3 +77,4 @@ def download_file(filename):
     file = '/home/ubuntu/logs/' + filename
     return send_file(file, as_attachment=True)
 """
+

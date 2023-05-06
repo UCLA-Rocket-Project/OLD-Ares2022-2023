@@ -27,11 +27,13 @@
 #define NS_TO_MS(ns)    ((ns)/1000000)
 /// Convert nanoseconds to microseconds
 #define NS_TO_US(ns)    ((ns)/1000)
-#define REF			4.97		//Modify according to actual voltage
+#define REF			5.26		//Modify according to actual voltage
 								//external AVDD and AVSS(Default), or internal 2.5V
 
 #define PORT     2000
 #define MAXLINE 1024
+
+#define NUM_CHANNELS 10
 
 uint64_t millis()
 {
@@ -52,9 +54,9 @@ void  Handler(int signo)
 int main(void)
 {
 	//char labels_raw[10][100] = {"IN0_raw", "IN1_raw", "IN2_raw", "IN3_raw", "IN4_raw", "IN5_raw", "IN6_raw", "IN7_raw", "IN8_raw", "IN9_raw"};
-	char labels[10][100] = {"IN0", "IN1", "IN2", "IN3", "IN4", "IN5", "IN6", "IN7", "IN8", "IN9"};
-	double a[10] = {243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 243.902439, 55.24861878, 243.902439, 1250, 1.0};
-	double b[10] = {-276.0243902, -273.9756098, -284.2926829, -257.5121951, -260.4390244, -269.6341463, -66.02762431, -259.6829268, -1171.25, 0.0};
+	char labels[10][100] = {"lox_fill", "fuel_tank", "cc", "low_press", "lox_tank", "pneumatics", "lox_manifold", "fuel_manifold", "high_press", "load_cell"};
+	double a[10] = {245.29, 249.93, 247.55, 247.4, 248.81, 47.864, 251.65, 253.77, 1248.9, 462};
+	double b[10] = {-266.93, -271.7, -261.56, -274.58, -260.28, -61.123, -282.75, -272.97, -1233.3, 0.954};
 	double c[10] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     UDOUBLE ADC[10];
 	double adc_data[10];
@@ -106,7 +108,7 @@ int main(void)
 	while(1) {
 		uint64_t now = millis();
 
-		for(i = 0; i < 9; i++)
+		for(i = 0; i < NUM_CHANNELS; i++)
 		{
 			ADC[i] = ADS1263_GetChannalValue(i);
 		}
@@ -120,7 +122,7 @@ int main(void)
 		fputs(data, log_raw);
 		fputs(data, log);
 
-		for(i=0; i<9; i++) {
+		for(i=0; i<NUM_CHANNELS; i++) {
 			if((ADC[i]>>31) == 1) {
 				adc_data[i] = REF*2 - ADC[i]/2147483648.0 * REF; //7fffffff + 1
 			}
