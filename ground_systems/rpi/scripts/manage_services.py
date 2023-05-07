@@ -10,6 +10,7 @@ Author:
 """
 
 import sys
+import time
 import argparse
 import subprocess
 import logging
@@ -136,6 +137,7 @@ def main():
     # Run operations on specified services.
     for service in services:
         subprocess.run(["systemctl", operation, SERVICES[service][0]])
+        time.sleep(1)
 
 
 if __name__ == '__main__':
