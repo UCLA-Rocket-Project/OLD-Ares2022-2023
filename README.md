@@ -1,5 +1,5 @@
-# AresSoftware
-This is a central repository for Ares Software. This repository contains all software for Avionics and Ground Systems, as well as any additional code/scripts used to support the development, deployment, and/or operation of the software. Additionally, select data and documentation is also version-controlled in this repository, enabling a "one-stop-shop" for everything of interest.
+# Ares2022-2023
+Central Repository for Ares Software for the 2022-2023 School Year. This repository contains all software for Avionics and Ground Systems, as well as any additional code/scripts used to support the development, deployment, and/or operation of the software. Additionally, select data and documentation is also version-controlled in this repository, enabling a "one-stop-shop" for everything of interest.
 
 
 ## Base-Level Directory Structure
